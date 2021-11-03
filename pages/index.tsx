@@ -10,12 +10,11 @@ export default function Index() {
   const onSub = async (e: any)=>{
     e.preventDefault();
     console.log(e.target[0].value);
-    const msg = await new MsgExecuteContract(
+    const title = e.target[0].value;
+    const msg = new MsgExecuteContract(
       walletAddress,
       contractAddress,
-      {
-        todos: e.target[0].value
-      }
+      title
     )
     const txResult = await wallet?.post({msgs:[msg]})
     console.log(txResult)
